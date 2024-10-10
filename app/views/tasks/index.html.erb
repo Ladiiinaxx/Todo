@@ -19,7 +19,7 @@
     <ul>
         <% @tasks.each do |task| %>
             <li>
-                <%= task.title %>
+                <%= content_tag(:span, task.title, style: 'color: rgb(255, 255, 255);') %>
                 <%= link_to 'Mark as Complete', complete_task_path(task), method: :get %> <!-- ลิงก์สำหรับทำเครื่องหมายว่าเสร็จ -->
             </li>
         <% end %>
