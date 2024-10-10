@@ -1,0 +1,28 @@
+<div class = center>
+    <h1>TODOS</h1>
+    
+    <!-- Tabs -->
+    <div>
+        <button>Incomplete</button>
+        <button>Complete</button>
+    </div>
+    
+    <div class = task>
+        <%= form_with model: @task, local: true do |form| %>
+            <div>
+            <%= form.label :title, 'Enter Task -->', style: 'color: rgb(255, 255, 255);' %>
+                <%= form.text_field :title %>
+                <%= form.submit 'Create Task' %>
+            </div>
+    </div>
+
+    <ul>
+        <% @tasks.each do |task| %>
+            <li>
+                <%= task.title %>
+                <%= link_to 'Mark as Complete', complete_task_path(task), method: :get %> <!-- ลิงก์สำหรับทำเครื่องหมายว่าเสร็จ -->
+            </li>
+        <% end %>
+    </ul>
+    <% end %>
+</div>
