@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  resources :categories do
+    resources :tasks, except: [ :show ]
+  end  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tasks do
     member do

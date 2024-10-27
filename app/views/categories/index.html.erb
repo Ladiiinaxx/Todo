@@ -1,0 +1,32 @@
+<div class="center">
+  <div class="container">
+    <h1 , style = justify-content: center>Categories</h1>
+
+    <%= form_with model: @category, local: true do |form| %>
+      <div>
+        <%= form.text_field :name, placeholder: "Enter category name" %>
+        <%= form.submit 'Create Category' %>
+      </div>
+    <% end %>
+
+    <ul>
+      <% @categories.each do |category| %>
+        <li>
+          <span style="color: rgb(255, 255, 255);"><%= category.name %></span>
+          <%= link_to '⚙️', edit_category_path(category) %>
+          <%= link_to '🗑️', category_path(category), method: :delete, class: 'task-button' %>
+
+          <!-- Display tasks in this category -->
+          <ul>
+            <% category.tasks.each do |task| %>
+              <li>
+                <span style="color: rgb(255, 255, 255);"><%= task.title %> (Status: <%= task.status %>)</span>
+                <%= link_to '❌', task_path(task), method: :delete, class: 'task-button' %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

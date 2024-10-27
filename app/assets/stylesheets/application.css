@@ -33,3 +33,12 @@
  .task{
     margin-top: 20px;
  }
+
+ .container {
+   border: 2px solid rgb(255, 255, 255);
+   border-radius: 10px; 
+   padding: 20px;
+   margin: 20px;
+   background-color: rgba(0, 0, 0, 0.7);
+   text-align: center;
+}

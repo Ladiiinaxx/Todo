@@ -6,11 +6,10 @@ class TasksController < ApplicationController
    
     def create
       @task = Task.new(task_params)
-      @task.status = 'incomplete'
-   
       if @task.save
-        redirect_to tasks_path, notice: 'Task was successfully created.'
+        redirect_to tasks_path
       else
+        @tasks = Task.all
         render :index
       end
     end
@@ -24,6 +23,6 @@ class TasksController < ApplicationController
     private
    
     def task_params
-      params.require(:task).permit(:title)
+      params.require(:task).permit(:title, :status, :category_id) # ต้องแน่ใจว่ารวม category_id ด้วย
     end
   end
